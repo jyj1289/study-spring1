@@ -1,6 +1,5 @@
 package com.yujin.freelecspringboot2webservice.web;
 
-import com.yujin.freelecspringboot2webservice.domain.posts.Posts;
 import com.yujin.freelecspringboot2webservice.service.posts.PostsService;
 import com.yujin.freelecspringboot2webservice.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +15,8 @@ public class IndexController {
     private final PostsService postsService;
 
     @GetMapping("/")
-    public String index(){
+    public String index(Model model){   // Model은 서버 템플릿 엔진에서 사용할 수 있는 객체를 저장할 수 있다. 여기서는 postsService.findAllDesc()로 가져온 결과를 posts로 index.mustache에 전달한다.
+        model.addAttribute("posts", postsService.findAllDesc());
         return "index";
     }
 
