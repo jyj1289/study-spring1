@@ -7,7 +7,7 @@ var main = {
 
         $('#btn-update').on('click', function(){ // btn-update란 id를 가진 HTML 엘리먼트에 click 이벤트가 발생할 때 update function을 실행하도록 이벤트를 등록
             _this.update();
-        })
+        });
     },
     save : function(){
         var data = {
