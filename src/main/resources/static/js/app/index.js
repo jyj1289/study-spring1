@@ -5,7 +5,7 @@ var main = {
             _this.save();
         });
     },
-    svae : function(){
+    save : function(){
         var data = {
             title: $('#title').val(),
             author: $('#author').val(),
