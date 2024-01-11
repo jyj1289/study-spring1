@@ -8,6 +8,11 @@ var main = {
         $('#btn-update').on('click', function(){ // btn-update란 id를 가진 HTML 엘리먼트에 click 이벤트가 발생할 때 update function을 실행하도록 이벤트를 등록
             _this.update();
         });
+
+        $('#btn-delete').on('click', function(){
+            _this.delete();
+        });
+
     },
     save : function(){
         var data = {
@@ -30,12 +35,15 @@ var main = {
         });
     },
     update : function(){    // 신규로 추가될 update function
+        console.log("업뎃버튼 클릭이 실행됨")
+
         var data = {
             title: $('#title').val(),
             content: $('#content').val()
         };
 
         var id = $('#id').val();
+
 
         $.ajax({
             type: 'PUT', // 여러 HTTP Method 중 PUT 메서드를 선택한다. PostApicontroller에 있는 API에서 이미 @PutMapping으로 선언했기 때문에 PUT을 사용해야 한다. 이는 REST 규약에 맞게 설정된 것이다.
@@ -45,6 +53,22 @@ var main = {
             data: JSON.stringify(data)
         }).done(function (){
             alert('글이 수정되었습니다.');
+            window.location.href = '/';
+        }).fail(function(error){
+            alert(JSON.stringify(error));
+        });
+    },
+    delete : function(){
+        console.log("버튼 클릭이 실행됨")
+        var id = $('#id').val();
+
+        $.ajax({
+            type: 'DELETE',
+            url: '/api/v1/posts/' + id,
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8'
+        }).done(function(){
+            alert('글이 삭제되었습니다.');
             window.location.href = '/';
         }).fail(function(error){
             alert(JSON.stringify(error));
