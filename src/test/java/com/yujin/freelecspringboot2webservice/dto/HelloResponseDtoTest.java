@@ -1,5 +1,6 @@
 package com.yujin.freelecspringboot2webservice.dto;
 
+
 import com.yujin.freelecspringboot2webservice.web.dto.HelloResponseDto;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
