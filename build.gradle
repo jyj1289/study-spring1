@@ -3,6 +3,9 @@ plugins {
     id 'org.springframework.boot' version '2.5.4'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
+jar {
+    enabled = false
+}
 
 group = 'com.yujin'
 version = '0.0.1-SNAPSHOT'
@@ -33,6 +36,3 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-jar {
-    enabled = false
-}
